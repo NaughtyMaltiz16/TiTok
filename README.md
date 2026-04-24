@@ -4,7 +4,7 @@
   <img src="assets/ICLR_logo.png" alt="ICLR 2026" style="height:60px;margin-bottom:16px;">
 </div>
 
-[cite_start]![TiTok overview](assets/TiTok_overview.png) [cite: 50]
+[cite_start]![TiTok overview](assets/titok_main_figure.png) [cite: 50]
 
 <div align="center">
 <p style="display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin:16px 0;width:100%;">
