@@ -37,7 +37,7 @@ The core idea is **token-wise contrastive excess**, which identifies the most in
 - 🔗 Tokenizer alignment across architectures  
 - 🚀 Efficient target LoRA training with masked supervision  
 
----
+
 
 
 ## 📖 Introduction
@@ -53,7 +53,7 @@ S(yᵢ) = Lₑ(yᵢ) - Lₐ(yᵢ)
 This score highlights tokens where the adapter contributes meaningful knowledge.  
 Training then focuses only on these high-signal tokens, enabling efficient transfer, even across different tokenizers.
 
----
+
 
 ## 🔄 Workflow Overview
 
@@ -64,7 +64,7 @@ Training then focuses only on these high-signal tokens, enabling efficient trans
 - 🔗 Alignment – Handle tokenizer mismatch (if needed)
 - 🚀 Training – Train target LoRA with masked loss
 
----
+
 
 ## 📚 Citation
 ```bibtex
