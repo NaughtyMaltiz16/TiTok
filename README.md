@@ -1,48 +1,79 @@
 # TiTok: Transfer Token-level Knowledge via Contrastive Excess to Transplant LoRA
 
-<div align="center">
-  <img src="assets/ICLR_logo.png" alt="ICLR 2026" style="height:60px;margin-bottom:16px;">
-</div>
+<p align="center">
+  <img src="assets/ICLR_logo.png" alt="ICLR 2026" height="60">
+</p>
 
-![TiTok overview](assets/TiTok_overview.png)
+<p align="center">
+  <img src="assets/TiTok_overview.png" alt="TiTok overview">
+</p>
 
-
-<div align="center">
-<p style="display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin:16px 0;width:100%;">
-  <a href="https://naughtymaltiz16.github.io/titok_project_page/" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:#2f2f2f;color:#ffffff;border-radius:9999px;text-decoration:none;font-weight:bold;letter-spacing:0.01em;">
-    <span style="font-size:1.1rem;">💻</span>
-    <span style="font-weight:bold;"> Project Page </span>
-  </a>
-  <span style="width:1px;height:24px;background:#666666;margin:0 8px;"></span>
-  <a href="https://arxiv.org/abs/2510.04682" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:#2f2f2f;color:#ffffff;border-radius:9999px;text-decoration:none;font-weight:bold;letter-spacing:0.01em;">
-    <span style="font-size:1.1rem;">📄</span>
-    <span style="font-weight:bold;"> Paper </span>
-  </a>
-  <span style="width:1px;height:24px;background:#666666;margin:0 8px;"></span>
-  <a href="https://github.com/NaughtyMaltiz16/TiTok" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:#2f2f2f;color:#ffffff;border-radius:9999px;text-decoration:none;font-weight:bold;letter-spacing:0.01em;">
-    <span style="font-size:1.1rem;">📂</span>
-    <span style="font-weight:bold;"> Code </span>
+<p align="center">
+  <a href="https://naughtymaltiz16.github.io/titok_project_page/">
+    💻 Project Page
+  </a> •
+  <a href="https://arxiv.org/abs/2510.04682">
+    📄 Paper
+  </a> •
+  <a href="https://github.com/NaughtyMaltiz16/TiTok">
+    📂 Code
   </a>
 </p>
-</div>
 
-[cite_start]**TiTok** is a lightweight framework for **LoRA Transplantation**[cite: 14, 30]. [cite_start]It enables the transfer of task-specific knowledge from a source model's LoRA adapter to a target model's adapter without requiring access to the original training data[cite: 14, 88]. [cite_start]By identifying the most informative tokens via **token-wise contrastive excess**, TiTok selectively guides the knowledge transfer process, significantly reducing computational overhead compared to sequence-level distillation[cite: 14, 16, 77].
+---
 
-This repository provides end-to-end scripts for:
-* [cite_start]🪄 **Synthetic Data Generation** using the source expert model[cite: 89, 98].
-* [cite_start]📊 **Excess Score Computation** to identify task-relevant tokens[cite: 90, 115].
-* [cite_start]🛡️ **Two-level Filtering** (Sample filtering & Token selection)[cite: 53, 91].
-* [cite_start]🔗 **Tokenizer Alignment** for cross-architecture transfers[cite: 92, 172].
-* [cite_start]🚀 **Target LoRA Training** with prioritized token supervision[cite: 91, 166].
+## 🚀 Overview
 
-**📋 Supported Benchmarks**
-* [cite_start]**Reasoning:** `BBH` (27 tasks), `MMLU` (57 subjects)[cite: 61, 201].
-* [cite_start]**Personalization/Generation:** `LaMP 4` (News Headlines), `LaMP 5` (Scholarly Titles)[cite: 206, 207].
+**TiTok** is a lightweight framework for **LoRA Transplantation**.  
+It transfers task-specific knowledge from a source model’s LoRA adapter to a target model **without access to original training data**.
+
+The core idea is **token-wise contrastive excess**, which identifies the most informative tokens and focuses learning on them—making transfer more efficient than sequence-level distillation.
+
+### ✨ Key Features
+- 🪄 Synthetic data generation using a source expert model  
+- 📊 Token-level excess score computation  
+- 🛡️ Two-level filtering (sample + token)  
+- 🔗 Tokenizer alignment across architectures  
+- 🚀 Efficient target LoRA training with masked supervision  
+
+---
+
 
 ## 📖 Introduction
-[cite_start]LoRA adapters are traditionally tied to their specific base models[cite: 10, 69]. [cite_start]TiTok breaks this dependency through a concept we introduce as **token-wise contrastive excess**, derived by comparing predictions from a source expert model (backbone + LoRA) against its "amateur" counterpart (backbone only)[cite: 56, 113]. 
 
-[cite_start]The excess score $S(y_i)$ identifies tokens where the adapter provides a decisive contribution[cite: 121]:
-$$S(y_i) = L_e(y_i) - L_a(y_i)$$
-[cite_start]where $L_e$ is the expert loss and $L_a$ is the amateur loss[cite: 116, 117]. [cite_start]By focusing training on high-signal tokens, TiTok ensures efficient knowledge acquisition even across mismatched tokenizers[cite: 169, 172].
+LoRA adapters are typically tied to their base models.  
+**TiTok removes this limitation** using *token-wise contrastive excess*:
 
+\[
+S(y_i) = L_e(y_i) - L_a(y_i)
+\]
+
+- \( L_e \): expert model loss (with LoRA)  
+- \( L_a \): amateur model loss (without LoRA)  
+
+This score highlights tokens where the adapter contributes meaningful knowledge.  
+Training then focuses only on these high-signal tokens, enabling efficient transfer—even across different tokenizers.
+
+---
+
+## 🔄 Workflow Overview
+
+🪄 Generation – Create synthetic data with the source expert
+📊 Scoring – Compute token-level excess scores
+🛡️ Sample Filtering – Keep high-signal samples
+🛡️ Token Selection – Select top k% informative tokens
+🔗 Alignment – Handle tokenizer mismatch (if needed)
+🚀 Training – Train target LoRA with masked loss
+
+---
+
+## 📚 Citation
+```bibtex
+@inproceedings{
+  jung2026titok,
+  title={TiTok: Transfer Token-level Knowledge via Contrastive Excess to Transplant LoRA},
+  author={ChanJoo Jung and Jaehyung Kim},
+  booktitle={The Fourteenth International Conference on Learning Representations},
+  year={2026},
+  url={https://openreview.net/forum?id=0B5K9pIdSK}
+}
