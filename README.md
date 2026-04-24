@@ -1,7 +1,7 @@
 # TiTok: Transfer Token-level Knowledge via Contrastive Excess to Transplant LoRA
 
 <p align="center">
-  <img src="assets/ICLR_logo.png" alt="ICLR 2026" height="60">
+  <img src="assets/ICLR_logo.png" alt="ICLR 2026" width="600">
 </p>
 
 <p align="center">
@@ -21,7 +21,7 @@
   </a>
 </p>
 
----
+
 
 ## 🚀 Overview
 
