@@ -44,12 +44,10 @@ The core idea is **token-wise contrastive excess**, which identifies the most in
 LoRA adapters are typically tied to their base models.  
 **TiTok removes this limitation** using *token-wise contrastive excess*:
 
-\[
-S(y_i) = L_e(y_i) - L_a(y_i)
-\]
+S(yᵢ) = Lₑ(yᵢ) - Lₐ(yᵢ)
 
-- \( L_e \): expert model loss (with LoRA)  
-- \( L_a \): amateur model loss (without LoRA)  
+- Lₑ: expert model loss (with LoRA)  
+- Lₐ: amateur model loss (without LoRA)  
 
 This score highlights tokens where the adapter contributes meaningful knowledge.  
 Training then focuses only on these high-signal tokens, enabling efficient transfer—even across different tokenizers.
@@ -59,10 +57,15 @@ Training then focuses only on these high-signal tokens, enabling efficient trans
 ## 🔄 Workflow Overview
 
 🪄 Generation – Create synthetic data with the source expert
+
 📊 Scoring – Compute token-level excess scores
+
 🛡️ Sample Filtering – Keep high-signal samples
+
 🛡️ Token Selection – Select top k% informative tokens
+
 🔗 Alignment – Handle tokenizer mismatch (if needed)
+
 🚀 Training – Train target LoRA with masked loss
 
 ---
