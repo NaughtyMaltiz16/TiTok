@@ -5,8 +5,9 @@
 </p>
 
 <p align="center">
-  <img src="assets/TiTok_overview.png" alt="TiTok overview">
+  <img src="assets/TiTok_overview.png" width="600">
 </p>
+
 
 <p align="center">
   <a href="https://naughtymaltiz16.github.io/titok_project_page/">
