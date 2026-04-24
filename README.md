@@ -42,8 +42,8 @@ The core idea is **token-wise contrastive excess**, which identifies the most in
 
 ## 📖 Introduction
 
-LoRA adapters are typically tied to their base models.  
-**TiTok removes this limitation** using *token-wise contrastive excess*:
+LoRA adapters are typically tied to their base models. So, LoRA adapters are not transferrable to other base models.
+**TiTok solves this limitation** using *token-wise contrastive excess* to selectively train on informative tokens within synthetic data:
 
 S(yᵢ) = Lₑ(yᵢ) - Lₐ(yᵢ)
 
