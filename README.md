@@ -57,12 +57,12 @@ Training then focuses only on these high-signal tokens, enabling efficient trans
 
 ## 🔄 Workflow Overview
 
-🪄 Generation – Create synthetic data with the source expert
-📊 Scoring – Compute token-level excess scores
-🛡️ Sample Filtering – Keep high-signal samples
-🛡️ Token Selection – Select top k% informative tokens
-🔗 Alignment – Handle tokenizer mismatch (if needed)
-🚀 Training – Train target LoRA with masked loss
+- 🪄 Generation – Create synthetic data with the source expert
+- 📊 Scoring – Compute token-level excess scores
+- 🛡️ Sample Filtering – Keep high-signal samples
+- 🛡️ Token Selection – Select top k% informative tokens
+- 🔗 Alignment – Handle tokenizer mismatch (if needed)
+- 🚀 Training – Train target LoRA with masked loss
 
 ---
 
