@@ -51,22 +51,17 @@ S(yᵢ) = Lₑ(yᵢ) - Lₐ(yᵢ)
 - Lₐ: amateur model loss (without LoRA)  
 
 This score highlights tokens where the adapter contributes meaningful knowledge.  
-Training then focuses only on these high-signal tokens, enabling efficient transfer—even across different tokenizers.
+Training then focuses only on these high-signal tokens, enabling efficient transfer, even across different tokenizers.
 
 ---
 
 ## 🔄 Workflow Overview
 
 🪄 Generation – Create synthetic data with the source expert
-
 📊 Scoring – Compute token-level excess scores
-
 🛡️ Sample Filtering – Keep high-signal samples
-
 🛡️ Token Selection – Select top k% informative tokens
-
 🔗 Alignment – Handle tokenizer mismatch (if needed)
-
 🚀 Training – Train target LoRA with masked loss
 
 ---
